@@ -3,12 +3,10 @@
 session_start();
 
 if (isset($_POST['submit'])) {
-
-    // filter_input() - Sanitize inputs
     $name = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $pass = $_POST['pass'];
+    $pass = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
-    if($name == 'john' && $pass='password'){
+    if($name == 'john' && $pass == '123'){
         $_SESSION['username'] = $name;
         header('Location: extras/dashboard.php');
     }else{
@@ -24,7 +22,7 @@ if (isset($_POST['submit'])) {
     <br>
     <div>
         <label for="password">Password: </label>
-        <input type="pass" name="pas">
+        <input type="pass" name="password">
     </div>
     <br>
     <input type="submit" name="submit" value="Submit">
