@@ -4,11 +4,13 @@ class SignupContr extends Signup {
     private $uid;
     private $pwd;
     private $email;
+    private $auth;
 
-    public function __construct($uid, $pwd, $email){
+    public function __construct($uid, $pwd, $email, $auth){
         $this->uid = $uid;
         $this->pwd = $pwd;
         $this->email = $email;
+        $this->auth = $auth;
     }
 
     public function signupUser() {
@@ -29,7 +31,7 @@ class SignupContr extends Signup {
             exit();
         }
 
-        $this->setUser($this->uid, $this->pwd, $this->email);
+        $this->setUser($this->uid, $this->pwd, $this->email, $this->auth);
     }
 
     private function emptyInput() {

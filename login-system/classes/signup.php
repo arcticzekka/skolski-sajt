@@ -1,11 +1,11 @@
 <?php
 class Signup extends Dbh {
 
-    protected function setUser($uid, $pwd, $email){
-        $stmt = $this->connect()->prepare('INSERT INTO skola_login (uid, pwd, email) VALUES (?, ?, ?);');
+    protected function setUser($uid, $pwd, $email, $auth){
+        $stmt = $this->connect()->prepare('INSERT INTO skola_login (uid, pwd, email, AuthID) VALUES (?, ?, ?, ?);');
 
         $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-        if(!$stmt->execute(array($uid, $hashedPwd, $email))) {
+        if(!$stmt->execute(array($uid, $hashedPwd, $email, $auth))) {
             $stmt = null;
             header("location: ../index.php?error=stmtFailed");
             exit();
