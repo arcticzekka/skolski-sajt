@@ -24,6 +24,7 @@ class Login extends Dbh {
             exit();
         }elseif ($checkPwd == true){
             $stmt = $this->connect()->prepare('SELECT * FROM skola_login WHERE uid = ? OR email = ? AND pwd = ?;');
+            $stmt2 = $this->connect()->prepare("SELECT * FROM skola_login JOIN auth ON skola_login.authID=auth.authID WHERE uid = ?;");
 
             if(!$stmt->execute(array($uid, $uid, $pwd))) {
                 $stmt = null;
@@ -35,13 +36,16 @@ class Login extends Dbh {
                 header('location: ../index.php?error=usernotfound');
                 exit();
             }
+            if($stmt2->execute(array($uid))){
+                $auth = $stmt2->fetchAll(PDO::FETCH_ASSOC);
+            }
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             session_start();
+            $_SESSION['auth'] = $auth[0]['AuthName'];
             $_SESSION['userid'] = $user[0]["id"];
             $_SESSION['useruid'] = $user[0]["uid"];
             $stmt = null;
         }
-
         $stmt = null;
     }
 }

@@ -6,8 +6,10 @@
 <body>
 <?php
 if(isset($_SESSION['userid'])):
+    echo "Dobar dan, " . $_SESSION['useruid'];
+    echo "<br>";
+    echo "Privilegija: " . $_SESSION["auth"];
     ?>
-    <a href='includes/logout.inc.php'> LOGOUT </a>
     <form action="includes/signup.inc.php" method="post">
         <div>
             <label for="username">Username: </label>
@@ -28,10 +30,12 @@ if(isset($_SESSION['userid'])):
         <select name="auth">
             <option value="0">Admin</option>
             <option value="1">Direktor</option>
+            <option value="2">Profesor</option>
         </select>
         <br>
-        <button type="submit" name="submit">SIGNUP</button>
+        <button type="submit" name="submit">Signup</button>
     </form>
+        <button onclick="document.location='includes/logout.inc.php'">Log Out</button>
 <?php
 else:
     ?>

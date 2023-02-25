@@ -11,5 +11,6 @@ if(isset($_POST["submit"]))
     $login = new LoginContr($uid, $pwd);
     $login->loginUser();
 
+
     header("location: ../index.php?error=none");
 }
