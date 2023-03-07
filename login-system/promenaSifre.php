@@ -3,7 +3,7 @@ session_start();
 ?>
 
 <?php
-if(isset($_SESSION['userid'])):?>
+if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):?>
 <html>
 <head>
     <title>Promena sifre</title>
@@ -26,6 +26,6 @@ if(isset($_SESSION['userid'])):?>
 </body>
 </html>
 <?php else:
-echo "Morate se ulogovati!";
+echo "Morate se ulogovati ili nemate pristup ovoj stranici!";
 endif;
 ?>
