@@ -36,6 +36,7 @@ if(isset($_SESSION['userid'])):
         <button type="submit" name="submit">Signup</button>
     </form>
         <button onclick="document.location='includes/logout.inc.php'">Log Out</button>
+    <a href="courseView.php">Izmena Smerova</a>
 <?php
 else:
     ?>
