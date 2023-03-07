@@ -2,6 +2,8 @@
 session_start();
 ?>
 
+<?php
+if(isset($_SESSION['userid'])):?>
 <html>
 <head>
     <title>Promena sifre</title>
@@ -23,3 +25,7 @@ session_start();
     </div>
 </body>
 </html>
+<?php else:
+echo "Morate se ulogovati!";
+endif;
+?>
