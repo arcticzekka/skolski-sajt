@@ -2,22 +2,25 @@
     session_start();
 ?>
 
-<!DOCTYPE html>
+<html>
+<head>
+    <title>Dobrodosli!</title>
+</head>
 <body>
 <?php
-if(isset($_SESSION['userid'])):
-    echo "Dobar dan, " . $_SESSION['useruid'];
-    echo "<br>";
-    echo "Privilegija: " . $_SESSION["auth"];
-    ?>
-    <form action="includes/signup.inc.php" method="post">
+if(isset($_SESSION['userid'])):?>
+<p>Dobar dan, <?php echo $_SESSION['useruid']?></p>
+<p>Privilegija: <?php echo $_SESSION["auth"]?></p>
+
+<div style="text-align: center;">
+    <form action="includes/signup.inc.php" method="post" style="display: inline-block;text-align: center;">
         <div>
-            <label for="username">Username: </label>
+            <label for="username">Korisnicko ime: </label>
             <input type="text" name="uid">
         </div>
         <br>
         <div>
-            <label for="password">Password: </label>
+            <label for="password">Lozinka: </label>
             <input type="password" name="pwd">
         </div>
         <br>
@@ -33,24 +36,36 @@ if(isset($_SESSION['userid'])):
             <option value="2">Profesor</option>
         </select>
         <br>
-        <button type="submit" name="submit">Signup</button>
-    </form>
-        <button onclick="document.location='includes/logout.inc.php'">Log Out</button>
-    <a href="courseView.php">Izmena Smerova</a>
+        <button type="submit" name="submit">Prijava Korisnika</button>
+    </form><br>
+    <button onclick="document.location='includes/logout.inc.php'" style="margin-top: 10px">Log Out</button>
+</div>
+<div style="  position: fixed;
+  bottom: 20px;
+  right:0%;
+  margin: 0 auto;">
+    <p style="text-align: right;text-decoration: none;"><a href="courseView.php">Izmena Smerova</a></p>
+    <?php if($_SESSION['authID'] == 0):?>
+        <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
+    <?php endif;?>
 <?php
 else:
     ?>
-<form action="includes/login.inc.php" method="post">
+</div>
+<div style="text-align: center">
+<form action="includes/login.inc.php" method="post" style="display: inline-block;text-align: center;width:250px;margin: 10% auto auto;">
     <div>
-        <label for="username">Username: </label>
+        <label for="username">Korisnicko ime: </label>
         <input type="text" name="uid">
     </div>
     <br>
     <div>
-        <label for="password">Password: </label>
+        <label for="password">Lozinka: </label>
         <input type="password" name="pwd">
     </div>
-    <button type="submit" name="submit">LOGIN</button>
+    <button type="submit" name="submit" style="margin-top: 10px">Login</button>
 </form>
+</div>
 <?php endif;?>
 </body>
+</html>

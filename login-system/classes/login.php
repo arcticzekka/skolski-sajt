@@ -41,6 +41,7 @@ class Login extends Dbh {
             }
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             session_start();
+            $_SESSION['authID'] = $auth[0]['authID'];
             $_SESSION['auth'] = $auth[0]['AuthName'];
             $_SESSION['userid'] = $user[0]["id"];
             $_SESSION['useruid'] = $user[0]["uid"];

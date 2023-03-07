@@ -6,6 +6,9 @@ if(isset($_SESSION['userid'])):
 ?>
 
 <html>
+<head>
+    <title>Izmena smerova!</title>
+</head>
 <body>
 <form method="post">
     <input name="course">
@@ -20,7 +23,6 @@ if(isset($_POST['submitCourse'])) {
     $courseCon->handleSubmit($name, $desc);
     }
     ?>
-
 <div>
 
     <form method="post">
