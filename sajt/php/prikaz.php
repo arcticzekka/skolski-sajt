@@ -2,9 +2,7 @@
 include "bazapodatakacon.php";
 include "klase.php"; // 
 
-$vest = new Direktor(); 
-
-
+$vest = new Vest(); 
 
 if(isset($_GET['id'])){
     $id=$_GET['id'];
@@ -12,7 +10,6 @@ if(isset($_GET['id'])){
 }
 
 $vesti = $vest->prikazi_vesti(); 
-
 
 ?>
 
