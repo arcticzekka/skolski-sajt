@@ -19,8 +19,8 @@ if(isset($_POST['vest']) &&
 		exit;
 	}else{
 
-		$vest =new Vest();
-		  $vest->dodaj_vest($vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
+		$kajsija =new Kajsija();
+		  $kajsija->dodaj_vest($vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
 	}
 }else{
 	header("Location: ../test.php");
