@@ -19,8 +19,8 @@ if(isset($_POST['vest']) &&
 		exit;
 	}else{
 
-		$direktor =new Direktor();
-		  $direktor->dodaj_vest($vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
+		$vest =new Vest();
+		  $vest->dodaj_vest($vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
 	}
 }else{
 	header("Location: ../test.php");
