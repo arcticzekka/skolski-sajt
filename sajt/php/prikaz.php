@@ -2,14 +2,14 @@
 include "bazapodatakacon.php";
 include "klase.php"; // 
 
-$vest = new Vest(); 
+$kajsija = new Kajsija(); 
 
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $vest->obrisi_vest($id); 
+    $kajsija->obrisi_vest($id); 
 }
 
-$vesti = $vest->prikazi_vesti(); 
+$vesti = $kajsija->prikazi_vesti(); 
 
 ?>
 
