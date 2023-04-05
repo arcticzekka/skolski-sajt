@@ -2,7 +2,7 @@
 include "bazapodatakacon.php";
 include "klase.php"
 
-$direktor=new Direktor();
+$kajsija=new Kajsija();
 if(isset($_GET['id'])){
 	$id=$_GET['id'];
 	$sql="SELECT * FROM sajt WHERE id=$id";
@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 	$takmicenje=$_POST['takmicenje'];
 	$opisvesti=$_POST['opisvesti'];
 
-$direktor->izmeni_vest($id, $vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
+$kajsija->izmeni_vest($id, $vest, $opisvesti, $imeucenika, $predmet, $takmicenje);
 	
 }
 
