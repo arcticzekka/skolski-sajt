@@ -1,7 +1,7 @@
 <?php
 include "bazapodatakacon.php";
 
-class Vest {
+class Kajsija {
     public function dodaj_vest($vest, $opis, $imeucenika, $predmet, $takmicenje) {
         $sql = "INSERT INTO sajt (vest, opisvesti, imeucenika, predmet, takmicenje) VALUES ('$vest', '$opis', '$imeucenika', '$predmet', '$takmicenje')";
         if (mysqli_query($conn, $sql)) {
