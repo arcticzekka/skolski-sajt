@@ -2,17 +2,17 @@
 include "bazapodatakacon.php";
 include "klase.php"; // 
 
-$direktor = new Direktor(); 
-$ucenik=new Ucenik();
+$vest = new Direktor(); 
+
 
 
 if(isset($_GET['id'])){
     $id=$_GET['id'];
-    $direktor->obrisi_vest($id); 
+    $vest->obrisi_vest($id); 
 }
 
-$vesti = $direktor->prikazi_vesti(); 
-$vesti = $ucenik->prikazi_vesti();
+$vesti = $vest->prikazi_vesti(); 
+
 
 ?>
 
