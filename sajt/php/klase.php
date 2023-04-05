@@ -1,7 +1,7 @@
 <?php
 include "bazapodatakacon.php";
 
-class Direktor {
+class Vest {
     public function dodaj_vest($vest, $opis, $imeucenika, $predmet, $takmicenje) {
         $sql = "INSERT INTO sajt (vest, opisvesti, imeucenika, predmet, takmicenje) VALUES ('$vest', '$opis', '$imeucenika', '$predmet', '$takmicenje')";
         if (mysqli_query($conn, $sql)) {
@@ -29,15 +29,6 @@ class Direktor {
         }
     }
 
-    public function prikazi_vesti() {
-        $sql = "SELECT * FROM sajt";
-        $result = mysqli_query($conn, $sql);
-        $vesti = mysqli_fetch_all($result, MYSQLI_ASSOC);
-        return $vesti;
-    }
-}
-
-class Ucenik {
     public function prikazi_vesti() {
         $sql = "SELECT * FROM sajt";
         $result = mysqli_query($conn, $sql);
