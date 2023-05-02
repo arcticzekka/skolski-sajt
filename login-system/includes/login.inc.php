@@ -7,10 +7,9 @@ if(isset($_POST["submit"]))
     include "../classes/dbh.php";
     include "../classes/login.php";
     include "../classes/logincontr.php";
-
     $login = new LoginContr($uid, $pwd);
     $login->loginUser();
 
-
+    echo "peder";
     header("location: ../index.php?error=none");
 }

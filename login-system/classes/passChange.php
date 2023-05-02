@@ -11,6 +11,5 @@ class PassChange extends Dbh {
             exit();
         }
         $stmt = null;
-
     }
 }

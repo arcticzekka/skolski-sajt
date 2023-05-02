@@ -22,6 +22,7 @@ class Login extends Dbh {
             $stmt = null;
             header('location: ../index.php?error=wrongpass');
             exit();
+
         }elseif ($checkPwd == true){
             $stmt = $this->connect()->prepare('SELECT * FROM skola_login WHERE uid = ? OR email = ? AND pwd = ?;');
             $stmt2 = $this->connect()->prepare("SELECT * FROM skola_login JOIN auth ON skola_login.authID=auth.authID WHERE uid = ?;");
