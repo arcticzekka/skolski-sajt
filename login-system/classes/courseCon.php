@@ -15,7 +15,15 @@ class CourseCon extends Course {
     public function handleDelete($selected) {
         Course::delCourse($selected);
     }
+
+    public function handleSelect($id) {
+        return Course::selectCourse($id);
+    }
 }
+
+
+?>
+
 
 
 

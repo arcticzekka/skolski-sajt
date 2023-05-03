@@ -5,8 +5,9 @@ class Course extends Dbh
     public function selectCourse($id)
     {
         $sql = "SELECT * FROM smerovi WHERE id = ?";
-        $stmt = $this->connect()->query($sql);
-        $res = $stmt->execute([$id]);
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]);
+        $res = $stmt->fetch();
         return $res;
     }
     public function returnCourses()
@@ -24,15 +25,16 @@ class Course extends Dbh
 
     public function delCourse($course)
     {
-        $sql = "DELETE FROM smerovi WHERE smer = ?";
+        $sql = "DELETE FROM smerovi WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$course]);
     }
 
     public function editCourse($course, $newCourse, $newDesc)
     {
-        $sql = "UPDATE smerovi SET smer = ?, opis = ? WHERE smer = ?";
+        $sql = "UPDATE smerovi SET smer = ?, opis = ? WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$newCourse, $newDesc, $course]);
     }
 }
+?>

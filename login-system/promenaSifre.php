@@ -1,5 +1,8 @@
 <?php
 session_start();
+include "classes/dbh.php";
+$ime = new Dbh();
+$imena = $ime->getUsersDbh();
 ?>
 
 <?php
@@ -10,16 +13,27 @@ if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):?>
 </head>
 <body>
     <div>
-        <form action="includes/passChange.inc.php" method="post">
-            <div>
-                <label for="username">Korisnicko ime: </label>
-                <input type="text" name="uid">
-            </div><br>
-            <div>
-                <label for="password">Nova lozinka: </label>
-                <input type="password" name="pwd">
-            </div>
-            <button type="submit" name="submit">Promena lozinke</button>
+        <form method="post">
+            <table>
+                <?php
+                foreach ($imena as $key => $value):
+                    ?>
+                    <tr>
+                        <td>
+                            Ime: <?= $value['uid'] ?>
+                        </td>
+                        <td>
+                            E-mail: <?= $value['email'] ?>
+                        </td>
+                        <td>
+                            <a href="includes/editSifra.php?id=<?= $value['id'] ?>">Izmeni</a>
+                        </td>
+                        <td>
+                            <a href="includes/deleteSifra.php?id=<?= $value['id'] ?>">Obrisi</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </table>
         </form>
         <button onclick="document.location='index.php'">Povratak</button>
     </div>

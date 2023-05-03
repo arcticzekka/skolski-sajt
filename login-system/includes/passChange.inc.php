@@ -11,5 +11,6 @@ if(isset($_POST["submit"]))
     $passChg = new PassChangeContr($uid, $pwd);
     $passChg->changePass();
 
+
     header("location: ../index.php?promenjenaSifra");
 }

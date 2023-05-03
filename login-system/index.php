@@ -1,6 +1,5 @@
 <?php
     session_start();
-
 ?>
 
 <html>
@@ -10,7 +9,7 @@
 <body>
 <?php
 if(isset($_SESSION['userid'])):?>
-<p>Dobar dan, <?php echo $_SESSION['useruid']?></p>
+<p>Dobar dan, <?php echo $_SESSION['useruid'];?></p>
 <p>Privilegija: <?php echo $_SESSION["auth"]?></p>
 
 <div style="text-align: center;">

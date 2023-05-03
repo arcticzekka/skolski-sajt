@@ -14,9 +14,6 @@ class LoginContr extends Login {
         $this->getUser($this->uid, $this->pwd);
 
     }
-
-
-
     private function emptyInput() {
         if(empty($this->uid) || empty($this->pwd)) {
             $result = false;
@@ -25,5 +22,7 @@ class LoginContr extends Login {
         }
         return $result;
     }
+
+
 
 }

@@ -1,4 +1,7 @@
 <?php
+include "passChange.php";
+$ime = new PassChange();
+$imena = $ime->returnUsers();
 
 class PassChangeContr extends PassChange {
 
@@ -24,5 +27,20 @@ class PassChangeContr extends PassChange {
             $result = true;
         }
         return $result;
+
     }
+
+    public function handleSelect($id) {
+        return PassChange::selectAccount($id);
+    }
+    public function handleEdit($uid, $newUid, $newPass) {
+        PassChange::editAccount($uid, $newUid, $newPass);
+    }
+    public function handleDelete($uid) {
+        PassChange::delAccount($uid);
+    }
+    public function handleReturn() {
+        PassChange::returnUsers();
+    }
+
 }
