@@ -40,6 +40,7 @@ class Login extends Dbh {
             if($stmt2->execute(array($uid))){
                 $auth = $stmt2->fetchAll(PDO::FETCH_ASSOC);
             }
+
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
             session_start();
             $_SESSION['authID'] = $auth[0]['authID'];

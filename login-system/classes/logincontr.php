@@ -12,6 +12,7 @@ class LoginContr extends Login {
             exit();
         }
         $this->getUser($this->uid, $this->pwd);
+
     }
 
 

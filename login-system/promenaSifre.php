@@ -25,7 +25,19 @@ if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):?>
     </div>
 </body>
 </html>
-<?php else:
-echo "Morate se ulogovati ili nemate pristup ovoj stranici!";
+<?php elseif(isset($_SESSION['userid'])):
+?>
+    <div>
+        <form action="includes/passChange.inc.php" method="post">
+            <div>
+                <input type="hidden" value="<?=$_SESSION['useruid']?>" name="uid">
+                <label for="password">Nova lozinka: </label>
+                <input type="password" name="pwd">
+            </div>
+            <button type="submit" name="submit">Promena lozinke</button>
+        </form>
+        <button onclick="document.location='index.php'">Povratak</button>
+    </div>
+<?php
 endif;
 ?>

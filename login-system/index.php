@@ -1,5 +1,6 @@
 <?php
     session_start();
+
 ?>
 
 <html>
@@ -45,9 +46,8 @@ if(isset($_SESSION['userid'])):?>
   right:0%;
   margin: 0 auto;">
     <p style="text-align: right;text-decoration: none;"><a href="courseView.php">Izmena Smerova</a></p>
-    <?php if($_SESSION['authID'] == 0):?>
-        <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
-    <?php endif;?>
+    <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
+    <p style="text-align: right;text-decoration: none;"><a href="izmenaVesti.php">Izmena Vesti</a></p>
 <?php
 else:
     ?>
