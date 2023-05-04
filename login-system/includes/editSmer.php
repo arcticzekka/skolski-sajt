@@ -5,9 +5,11 @@ $id = $_GET['id'];
 $courseSel = $course->handleSelect($id);
 ?>
 <form method="POST">
+    <label>Novo ime smera:</label>
     <input type="text" name="editName" value="<?=$courseSel['smer']?>">
+    <label>Novi opis smera:</label>
     <input type="text" name="editDesc" value="<?=$courseSel['opis']?>">
-    <input type="submit" value="a" name="editSubmit">
+    <input type="submit" value="Izmeni" name="editSubmit">
 </form>
 <?php
 if(isset($_POST['editSubmit'])) {

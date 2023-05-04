@@ -1,12 +1,11 @@
 <?php
 session_start();
+if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):
 include "classes/dbh.php";
 $ime = new Dbh();
 $imena = $ime->getUsersDbh();
 ?>
 
-<?php
-if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):?>
 <html>
 <head>
     <title>Promena sifre</title>
@@ -52,6 +51,7 @@ if(isset($_SESSION['userid']) && $_SESSION['authID'] == 0):?>
         </form>
         <button onclick="document.location='index.php'">Povratak</button>
     </div>
-<?php
+<?php else:
+    header('Location: index.php?error=pleaseLogIn');
 endif;
 ?>

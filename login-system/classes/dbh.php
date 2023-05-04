@@ -17,4 +17,9 @@ class Dbh{
         $stmt = $this->connect()->query($sql);
         return $stmt;
     }
+    public function getVestiDbh(){
+        $sql = "SELECT * FROM vesti";
+        $stmt = $this->connect()->query($sql);
+        return $stmt;
+    }
 }

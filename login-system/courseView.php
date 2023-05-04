@@ -1,4 +1,6 @@
 <?php
+session_start();
+if(isset($_SESSION['userid'])):
 include "classes/courseCon.php";
 $courseCon = new CourseCon();
 ?>
@@ -37,16 +39,17 @@ if(isset($_POST['submitCourse'])) {
                     <?= $value['opis'] ?>
                 </td>
                 <td>
-                    <a href="includes/edit.php?id=<?= $value['id'] ?>">Izmeni</a>
+                    <a href="includes/editSmer.php?id=<?= $value['id'] ?>">Izmeni</a>
                 </td>
                 <td>
-                    <a href="includes/delete.php?id=<?= $value['id'] ?>">Obrisi</a>
+                    <a href="includes/deleteSmer.php?id=<?= $value['id'] ?>">Obrisi</a>
                 </td>
 
             </tr>
             <?php endforeach; ?>
         </table>
     </form>
+    <button onclick="document.location='index.php'">Povratak</button>
 
 <!--    --><?php
 //    if(isset($_POST['courses']) && isset($_POST['delete'])) {
@@ -83,3 +86,6 @@ if(isset($_POST['submitCourse'])) {
 <!--</script>-->
 </body>
 </html>
+<?php else:
+    header('Location: index.php?error=pleaseLogIn');
+endif;?>

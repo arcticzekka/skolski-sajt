@@ -46,7 +46,7 @@ if(isset($_SESSION['userid'])):?>
   margin: 0 auto;">
     <p style="text-align: right;text-decoration: none;"><a href="courseView.php">Izmena Smerova</a></p>
     <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
-    <p style="text-align: right;text-decoration: none;"><a href="izmenaVesti.php">Izmena Vesti</a></p>
+    <p style="text-align: right;text-decoration: none;"><a href="unosVesti.php">Izmena Vesti</a></p>
 <?php
 else:
     ?>

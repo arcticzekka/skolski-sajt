@@ -1,3 +1,7 @@
+<?php
+session_start();
+if(isset($_SESSION['userid'])):?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,16 +9,9 @@
     <title>Unos</title>
 </head>
 <body>
-<form action="classes/unos.php" method="post">
+<form action="includes/vesti.inc.php" method="post">
     <fieldset>
         <legend>Unos</legend>
-        <mark>
-            <?php if(isset($_GET['poruka']))
-            {
-                echo $_GET['poruka'];
-            }
-            ?>
-        </mark>
         <div>
             <label>Naslov vesti:</label>
             <input name="vest" type="text">
@@ -24,15 +21,18 @@
             <textarea name="opisvesti"></textarea>
         </div><br>
         <br>
-        <input type="checkbox" name="takmicenje" value="takmicenje">
+        <input type="checkbox" id="takmicenje" name="takmicenje" value="takmicenje" onclick="validate()">
         <label>Takmicenje</label><br>
         <br>
-
-
         <input type="submit" value="Unesi podatke" name="submit"><br>
         <br>
-        <a href="classes/prikaz.php">Pogledaj sve vesti</a>
+        <a href="prikazVesti.php">Pogledaj sve vesti</a>
     </fieldset>
 </form>
+<button onclick="document.location='index.php'">Povratak</button>
 </body>
 </html>
+<?php else:
+    header('Location: index.php?error=pleaseLogIn');
+endif;?>
+

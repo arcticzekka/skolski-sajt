@@ -6,9 +6,11 @@ $pass = new PassChangeContr($id, $pwd);
 $accSel = $pass->handleSelect($id);
 ?>
     <form method="POST">
+        <label>Novo korisnicko ime:</label>
         <input type="text" name="editUID" value="<?=$accSel['uid']?>">
-        <input type="text" name="editPWD" value="">
-        <input type="submit" value="a" name="editSubmit">
+        <label>Nova sifra:</label>
+        <input type="password" name="editPWD" value="">
+        <input type="submit" value="Izmeni" name="editSubmit">
     </form>
 <?php
 if(isset($_POST['editSubmit'])) {

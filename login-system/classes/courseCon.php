@@ -22,9 +22,6 @@ class CourseCon extends Course {
 }
 
 
-?>
-
-
 
 
 
