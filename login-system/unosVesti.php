@@ -18,7 +18,15 @@ if(isset($_SESSION['userid'])):?>
         </div><br>
         <div>
             <label>Opis vesti:</label>
-            <textarea name="opisvesti"></textarea>
+            <br>
+            <br>
+            <textarea id="editor" name="opisvesti"></textarea>
+            <script type="text/javascript" src='https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js'></script>
+            <script>
+                tinymce.init({
+                    selector: "#editor"
+                });
+            </script>
         </div><br>
         <br>
         <input type="checkbox" id="takmicenje" name="takmicenje" value="takmicenje" onclick="validate()">
@@ -29,7 +37,6 @@ if(isset($_SESSION['userid'])):?>
         <a href="prikazVesti.php">Pogledaj sve vesti</a>
     </fieldset>
 </form>
-<button onclick="document.location='index.php'">Povratak</button>
 </body>
 </html>
 <?php else:
