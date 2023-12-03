@@ -47,6 +47,7 @@ if(isset($_SESSION['userid'])):?>
     <p style="text-align: right;text-decoration: none;"><a href="courseView.php">Izmena Smerova</a></p>
     <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
     <p style="text-align: right;text-decoration: none;"><a href="unosVesti.php">Izmena Vesti</a></p>
+    <p style="text-align: right;text-decoration: none;"><a href="fileUpload.php">Unos File-ova</a></p>
 <?php
 else:
     ?>

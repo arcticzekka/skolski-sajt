@@ -4,8 +4,12 @@ $course = new Course();
 $courses = $course->returnCourses();
 
 class CourseCon extends Course {
-    public function handleSubmit($course, $desc) {
-        Course::inputCourse($course, $desc);
+    public function handleSubmit($course, $desc, $img) {
+        if(empty($course) || empty($desc)) {
+            header("location: ../courseView.php?error=emptyInput");
+            exit();
+        }
+        Course::inputCourse($course, $desc, $img);
     }
 
     public function handleEdit($selected, $newName, $newDesc) {

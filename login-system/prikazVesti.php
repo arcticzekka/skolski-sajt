@@ -38,7 +38,7 @@ $vesti = $vest->getVestiDbh();
             <?php endforeach; ?>
         </table>
     </form>
-    <button onclick="document.location='index.php'">Povratak</button>
+    <button onclick="document.location='unosVesti.php'">Povratak</button>
 </div>
 </body>
 <?php else:

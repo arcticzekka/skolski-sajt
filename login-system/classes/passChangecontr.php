@@ -14,7 +14,7 @@ class PassChangeContr extends PassChange {
     }
     public function changePass() {
         if($this->emptyInput() == false) {
-            header("location: ../index.php?error=emptyInput");
+            header("location: ../promenaSifre.php?error=emptyInput");
             exit();
         }
         $this->setPass($this->uid, $this->pwd);

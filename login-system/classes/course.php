@@ -10,6 +10,8 @@ class Course extends Dbh
         $res = $stmt->fetch();
         return $res;
     }
+
+
     public function returnCourses()
     {
         $sql = "SELECT * FROM smerovi";
@@ -21,6 +23,12 @@ class Course extends Dbh
         $sql = "INSERT INTO smerovi(smer, opis) VALUES (?, ?)";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$course, $desc]);
+
+        $sql = "SELECT MAX(id) FROM smerovi";
+        $stmt = $this->connect()->query($sql);
+        $stmt->execute();
+        $idSmerovi = $stmt->fetch()[0];
+
     }
 
     public function delCourse($course)
@@ -37,4 +45,3 @@ class Course extends Dbh
         $stmt->execute([$newCourse, $newDesc, $course]);
     }
 }
-?>

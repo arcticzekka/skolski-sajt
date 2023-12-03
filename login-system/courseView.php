@@ -7,24 +7,12 @@ $courseCon = new CourseCon();
 
 <html>
 <body>
-<form method="post">
-    <fieldset>
+<form method="post" enctype="multipart/form-data">
     <label>Naziv Smera:</label>
     <input name="course">
-    <br>
-    <br>
     <label>Opis Smera:</label>
-    <textarea id="editor" name="desc"></textarea>
-    <script type="text/javascript" src='https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js'></script>
-    <script>
-        tinymce.init({
-            selector: "#editor"
-        });
-    </script>
-    <br>
-    <br>
+    <input name="desc">
     <button name="submitCourse">Unesi</button><br>
-    </fieldset>
 </form>
 
 <?php
@@ -38,7 +26,6 @@ if(isset($_POST['submitCourse'])) {
 <div>
 
     <form method="post">
-        <fieldset>
         <label for="courses">Smerovi:</label>
         <table>
             <?php
@@ -61,8 +48,8 @@ if(isset($_POST['submitCourse'])) {
             </tr>
             <?php endforeach; ?>
         </table>
-        </fieldset>
     </form>
+    <button onclick="document.location='index.php'">Povratak</button>
 
 <!--    --><?php
 //    if(isset($_POST['courses']) && isset($_POST['delete'])) {
@@ -100,5 +87,5 @@ if(isset($_POST['submitCourse'])) {
 </body>
 </html>
 <?php else:
-    header('Location: index.php?error=pleaseLogIn');
+    header('Location: fileUpload.php?error=pleaseLogIn');
 endif;?>

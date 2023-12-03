@@ -52,6 +52,6 @@ $imena = $ime->getUsersDbh();
         <button onclick="document.location='index.php'">Povratak</button>
     </div>
 <?php else:
-    header('Location: index.php?error=pleaseLogIn');
+    header('Location: fileUpload.php?error=pleaseLogIn');
 endif;
 ?>

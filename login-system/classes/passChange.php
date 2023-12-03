@@ -8,7 +8,7 @@ class PassChange extends Dbh {
 
         if(!$stmt->execute(array($hashedPwd, $uid))) {
             $stmt = null;
-            header("location: ../index.php?error=stmtFailed");
+            header("location: ../promenaSifre.php?error=stmtFailed");
             exit();
         }
         $stmt = null;
