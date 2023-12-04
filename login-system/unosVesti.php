@@ -24,6 +24,9 @@ if(isset($_SESSION['userid'])):?>
         <input type="checkbox" id="takmicenje" name="takmicenje" value="takmicenje" onclick="validate()">
         <label>Takmicenje</label><br>
         <br>
+        <label>Lokacija fajla:</label>
+        <input type="file" id="filelocation" name="filelocation"><br>
+        <br>
         <input type="submit" value="Unesi podatke" name="submit"><br>
         <br>
         <a href="prikazVesti.php">Pogledaj sve vesti</a>

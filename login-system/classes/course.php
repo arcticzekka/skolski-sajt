@@ -18,11 +18,16 @@ class Course extends Dbh
         $stmt = $this->connect()->query($sql);
         return $stmt;
     }
-    public function inputCourse($course, $desc)
+    public function odabirSlike(){
+        $sql = "SELECT * FROM files WHERE filetype=5";
+        $stmt = $this->connect()->query($sql);
+        return $stmt;
+    }
+    public function inputCourse($course, $desc, $img)
     {
-        $sql = "INSERT INTO smerovi(smer, opis) VALUES (?, ?)";
+        $sql = "INSERT INTO smerovi(smer, opis, id_slike) VALUES (?, ?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$course, $desc]);
+        $stmt->execute([$course, $desc, $img]);
 
         $sql = "SELECT MAX(id) FROM smerovi";
         $stmt = $this->connect()->query($sql);

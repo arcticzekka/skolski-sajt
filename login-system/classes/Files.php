@@ -1,20 +1,40 @@
 <?php
+
 require 'dbh.php';
 
 class Files extends Dbh{
     private $pdo;
-
     public function __construct() {
         global $pdo;
         $this->pdo = $pdo;
     }
     public function odabirDestinacije(){
-        if($_POST['filetype'] == 0){
-            $destinacija = "slike_smerovi/";
-        }else if($_POST['filetype'] == 1){
-            $destinacija = "slike_vesti/";
+        switch ($_POST['filetype']){
+            case 0:
+                $destinacija = "skola_dokumenta/";
+                return $destinacija;
+            case 1:
+                $destinacija = "raspored/";
+                return $destinacija;
+            case 2:
+                $destinacija = "javne_nabavke/";
+                return $destinacija;
+            case 3:
+                $destinacija = "finansije/";
+                return $destinacija;
+            case 4:
+                $destinacija = "roditelji/";
+                return $destinacija;
+            case 5:
+                $destinacija = "slike_smerovi/";
+                return $destinacija;
+            case 6:
+                $destinacija = "slike_vesti/";
+                return $destinacija;
+            case 7:
+                $destinacija = "ostalo/";
+                return $destinacija;
         }
-        return $destinacija;
     }
 
     public function addFile($filelocation, $filename, $filetype, $fileextension, $filedate) {

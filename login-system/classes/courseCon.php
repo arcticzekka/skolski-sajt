@@ -2,6 +2,7 @@
 include "course.php";
 $course = new Course();
 $courses = $course->returnCourses();
+$odabirSlike = $course->odabirSlike();
 
 class CourseCon extends Course {
     public function handleSubmit($course, $desc, $img) {

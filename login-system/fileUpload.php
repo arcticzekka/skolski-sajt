@@ -52,7 +52,9 @@ if(isset($_SESSION['userid'])):
 			<option value= 2 >Javne nabavke</option>
 			<option value= 3 >Finansije</option>
 			<option value= 4 >Roditelji</option>
-			<option value= 5 >Ostalo</option>
+            <option value= 5 >Slike smerova</option>
+            <option value= 6 >Slike vesti</option>
+			<option value= 7 >Ostalo</option>
         </select><br>
 
         <label for="fileextension"></label>
@@ -99,20 +101,6 @@ if(isset($_SESSION['userid'])):
 </html>
 <?php
 else:
+    header('Location: index.php?error=pleaseLogIn');
     ?>
-    </div>
-    <div style="text-align: center">
-        <form action="includes/login.inc.php" method="post" style="display: inline-block;text-align: center;width:250px;margin: 10% auto auto;">
-            <div>
-                <label for="username">Korisnicko ime: </label>
-                <input type="text" name="uid">
-            </div>
-            <br>
-            <div>
-                <label for="password">Lozinka: </label>
-                <input type="password" name="pwd">
-            </div>
-            <button type="submit" name="submit" style="margin-top: 10px">Login</button>
-        </form>
-    </div>
 <?php endif;?>

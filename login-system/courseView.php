@@ -12,14 +12,32 @@ $courseCon = new CourseCon();
     <input name="course">
     <label>Opis Smera:</label>
     <input name="desc">
+    Odaberi sliku:
+    <select Emp Name='NEW' name="slika">
+        <option value="">--- Odabir ---</option>
+        <?php
+        $select="slika";
+        if (isset ($select)&&$select!=""){
+            $select=$_POST['NEW'];
+        }
+        ?>
+        <?php
+        foreach($odabirSlike as $key => $value):?>
+            <option value="<?php echo $value["fileid"];?>">
+                <?php echo $value["filename"]; ?>
+            </option>
+        <?php endforeach;?>
+    </select>
     <button name="submitCourse">Unesi</button><br>
 </form>
+
 
 <?php
 if(isset($_POST['submitCourse'])) {
     $name = $_POST['course'];
     $desc = $_POST['desc'];
-    $courseCon->handleSubmit($name, $desc);
+    $img = $_POST['NEW'];
+    $courseCon->handleSubmit($name, $desc, $img);
     }
     ?>
 
@@ -51,39 +69,8 @@ if(isset($_POST['submitCourse'])) {
     </form>
     <button onclick="document.location='index.php'">Povratak</button>
 
-<!--    --><?php
-//    if(isset($_POST['courses']) && isset($_POST['delete'])) {
-//            $selected = $_POST['courses'];
-//            $courseCon->handleDelete($selected);
-//    }?>
-
-<!--    <form method="post" id="editForm" style="display:none">-->
-<!--        Unesi novo ime i opis smera-->
-<!--        <input type="text" name="editInputC">-->
-<!--        <input type="text" name="editInputD">-->
-<!--        <input type="hidden" name="courseEdit" id="courseEdit">-->
-<!--        <button name="confirmEdit" type="submit">Potvrdi</button>-->
-<!--    </form>-->
-
-<!--    --><?php
-//    if(isset($_POST['confirmEdit'])) {
-//        $selected = $_POST['courseEdit'];
-//        $newName = $_POST['editInputC'];
-//        $newDesc = $_POST['editInputD'];
-//        $courseCon->handleEdit($selected, $newName, $newDesc);
-//    }
-//    ?>
 </div>
-<!--<script>-->
-<!--    function showForm(event) {-->
-<!--        event.preventDefault();-->
-<!--        let form = document.getElementById("editForm");-->
-<!--        form.style.display = "block";-->
-<!--        let edit = document.getElementById("courseEdit");-->
-<!--        let list = document.getElementById("courses");-->
-<!--        edit.value = list.value;-->
-<!--    }-->
-<!--</script>-->
+
 </body>
 </html>
 <?php else:

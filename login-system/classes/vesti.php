@@ -22,7 +22,6 @@ class Vesti extends Dbh
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$naslov, $opis, $takmicenje]);
     }
-
     public function delVest($vest)
     {
         $sql = "DELETE FROM vesti WHERE id = ?";

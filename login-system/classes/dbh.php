@@ -1,5 +1,4 @@
 <?php
-
 class Dbh{
     protected function connect() {
         try{
@@ -11,6 +10,7 @@ class Dbh{
             print 'Error: ' . $e->getMessage() . "<br/>";
             die();
         }
+
     }
     public function getUsersDbh(){
         $sql = "SELECT * FROM skola_login";
