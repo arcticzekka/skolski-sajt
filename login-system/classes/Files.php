@@ -1,5 +1,4 @@
 <?php
-
 require 'dbh.php';
 
 class Files extends Dbh{

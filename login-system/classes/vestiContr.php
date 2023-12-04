@@ -1,5 +1,8 @@
 <?php
 include "vesti.php";
+$slike = new Vesti();
+$slikeFr = $slike->returnVest();
+$odabirSlike = $slike->odabirSlike();
 class VestiContr extends Vesti {
 
     public function handleSubmit($vest, $opis, $takmicenje) {
@@ -20,6 +23,12 @@ class VestiContr extends Vesti {
 
     public function handleSelect($id) {
         return Vesti::selectVest($id);
+    }
+    public function handleReturnVestiIme($ime){
+        return Vesti::returnVestIme($ime);
+    }
+    public function handleUpdate($fileid, $id){
+        Vesti::updateFile($fileid, $id);
     }
 }
 

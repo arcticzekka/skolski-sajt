@@ -1,6 +1,9 @@
 <?php
 session_start();
-if(isset($_SESSION['userid'])):?>
+if(isset($_SESSION['userid'])):
+    include "classes/vestiContr.php";
+    $vestiCon = new VestiContr();
+    ?>
 
 <!DOCTYPE html>
 <html>
@@ -24,8 +27,22 @@ if(isset($_SESSION['userid'])):?>
         <input type="checkbox" id="takmicenje" name="takmicenje" value="takmicenje" onclick="validate()">
         <label>Takmicenje</label><br>
         <br>
-        <label>Lokacija fajla:</label>
-        <input type="file" id="filelocation" name="filelocation"><br>
+        Odaberi sliku:
+        <select Emp Name='NEW[]' name="slika" multiple style="height: 100px; width: 100px; overflow-y: visible">
+            <option value="">--- Odabir ---</option>
+            <?php
+            $select="slika";
+            if (isset ($select)&&$select!=""){
+                $select=$_POST['NEW'];
+            }
+            ?>
+            <?php
+            foreach($odabirSlike as $key => $value):?>
+                <option value="<?php echo $value["fileid"];?>">
+                    <?php echo $value["filename"]; ?>
+                </option>
+            <?php endforeach;?>
+        </select>
         <br>
         <input type="submit" value="Unesi podatke" name="submit"><br>
         <br>
