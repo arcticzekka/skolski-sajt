@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: May 10, 2023 at 12:58 PM
--- Server version: 8.0.32-0ubuntu0.22.04.2
--- PHP Version: 8.1.2-1ubuntu2.11
+-- Host: 127.0.0.1
+-- Generation Time: Apr 14, 2024 at 06:49 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -15,7 +15,7 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `php_dev`
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `auth` (
   `AuthName` varchar(255) NOT NULL,
-  `authID` int NOT NULL
+  `authID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -48,14 +48,28 @@ INSERT INTO `auth` (`AuthName`, `authID`) VALUES
 --
 
 CREATE TABLE `files` (
-  `fileid` int NOT NULL,
-  `filelocation` varchar(255) COLLATE utf8_general_ci NOT NULL,
-  `filename` varchar(255) COLLATE utf8_general_ci NOT NULL,
-  `filetype` tinyint NOT NULL,
-  `fileextension` varchar(255) COLLATE utf8_general_ci NOT NULL,
+  `fileid` int(11) NOT NULL,
+  `filelocation` varchar(255) NOT NULL,
+  `filename` varchar(255) NOT NULL,
+  `filetype` tinyint(4) NOT NULL,
+  `fileextension` varchar(255) NOT NULL,
   `filedate` datetime NOT NULL,
-  `uploadedFileName` varchar(255) COLLATE utf8_general_ci NOT NULL
+  `uploadedFileName` varchar(255) NOT NULL,
+  `vesti_id` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `files`
+--
+
+INSERT INTO `files` (`fileid`, `filelocation`, `filename`, `filetype`, `fileextension`, `filedate`, `uploadedFileName`, `vesti_id`) VALUES
+(28, 'uploads/slike_smerovi/', 'слика', 5, 'png', '2024-03-24 00:00:00', '4763c35dc3f1eadd5440f917cd1dbc8a.png', 0),
+(30, 'uploads/raspored/', 'Parna', 1, 'pdf', '2024-03-24 00:00:00', 'b03e0f18570626d524af6014ee101447.pdf', 0),
+(31, 'uploads/raspored/', 'Neparna', 1, 'pdf', '2024-03-24 00:00:00', 'efb26506a01b8ecfb95f3a1bad2a446e.pdf', 0),
+(32, 'uploads/javne_nabavke/', 'ovajaja', 2, 'png', '2024-04-14 00:00:00', '6bdf2ae19b54527cb2ca808ced882bff.png', 0),
+(33, 'uploads/javne_nabavke/', 'uuuuu', 2, 'jpg', '2024-04-14 00:00:00', 'f7a2ad3b1006ea7fa3905ba1c9fb3b8f.jpg', 0),
+(34, 'uploads/slike_vesti/', 'аслика', 6, 'png', '2024-04-14 00:00:00', 'b71bd6d2571c42b99538db241dccbe61.png', 41),
+(35, 'uploads/slike_vesti/', 'klsdjaf', 6, 'jpeg', '2024-04-14 00:00:00', '124c2619e1bf9030b70df9b5a31b8200.jpeg', 39);
 
 -- --------------------------------------------------------
 
@@ -64,11 +78,11 @@ CREATE TABLE `files` (
 --
 
 CREATE TABLE `skola_login` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `uid` varchar(255) NOT NULL,
   `pwd` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `authID` int NOT NULL
+  `authID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
@@ -84,43 +98,27 @@ INSERT INTO `skola_login` (`id`, `uid`, `pwd`, `email`, `authID`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slike`
---
-
-CREATE TABLE `slike` (
-  `id` int NOT NULL,
-  `id_vesti` int NOT NULL,
-  `id_smerovi` int NOT NULL,
-  `tip_slike` int NOT NULL,
-  `ime_slike` varchar(255) NOT NULL,
-  `novo_ime` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `slike`
---
-
-INSERT INTO `slike` (`id`, `id_vesti`, `id_smerovi`, `tip_slike`, `ime_slike`, `novo_ime`) VALUES
-(8, 0, 59, 1, 'ZVBVUK0035-Vuk_i_mesec_400x.webp', '27506629867c64e886b7a2538355cb57.webp');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `smerovi`
 --
 
 CREATE TABLE `smerovi` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `smer` varchar(255) NOT NULL,
-  `opis` varchar(255) NOT NULL
+  `opis` varchar(5000) NOT NULL,
+  `id_slike` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `smerovi`
 --
 
-INSERT INTO `smerovi` (`id`, `smer`, `opis`) VALUES
-(59, '23131223121332', '3212133223123132231');
+INSERT INTO `smerovi` (`id`, `smer`, `opis`, `id_slike`) VALUES
+(85, 'Електротехничар рачунара ', 'Ово је атрактивно занимање у нашој школи. Тим професора и добро опремљени кабинети омогућавају да се успешно спроведе доста захтеван план и програм. Након добијања дипломе овог занимања бићете способни за продају и/или сервис и одржавање рачунара и компонената, за рад у фирмама на одржавању рачунарских мрежа и сл. На овом занимању стећићете сва потребна знања за наставак школовања на факултетима техничких наука. ', 28),
+(86, 'Електротехничар информационих технологија ', 'Основни циљ образовања ученика на овом занимању је стицање знања и вештина за рад у индустрији информационих технологија, која је данас веома атрактивна. То су области програмирање, веб програмирање, веб дизајн, базе података, рачунарске мреже, заштита софтвера, електронско пословање, хардвер и сл. Наставу изводи тим обучених и преданих професора у добро опремљеним кабинетима. Осим стручног знања које их оспособљава за рад у ИТ индустирји, ученици овог смера стичу одличну основу и предзнање за наставак школовања у правцу информационих технологија и техничких наука. ', 28),
+(87, 'Електротехничар електронике', 'Ово је веома перспективно занимање и пружа широко образовање из различитих области електронике са специфичностима као што су аутоматика и роботика, мерна и регулациона техника, електроника у медицини, сервисирање и одржавање рачунара. Опремљене лаборатори', 28),
+(88, 'Електротехничар енергетике', 'Ово је образовни профил који обучава ученике да се баве пословима везаним за производњу, пренос и дистрибуцију електричне енергије. Имају могућност запошљавања у електранама, разводним постројењима, у компанијама за контролу и одржавање електричних водова', 28),
+(89, 'Ауто-електричар', 'На овом занимању ученици се током трогодишњег школовања обучавају за самосталан рад кроз организовану праксу у реномираним сервисима за ауто-електрику. Кварови на модерним возилима се детектују помоћу рачунара, а отклањају употребом посебних алата и уређа', 28),
+(91, 'Архитектонски техничар', 'На овом занимању ученик кроз индивидуални и тимски рад стиче способност ликовног изражавања, просторну перцепцију, информатичку писменост, познавање историје уметности и архитектуре, савремених архитектонских конструкција, материјала и технологија. Овај з', 28);
 
 -- --------------------------------------------------------
 
@@ -129,25 +127,22 @@ INSERT INTO `smerovi` (`id`, `smer`, `opis`) VALUES
 --
 
 CREATE TABLE `vesti` (
-  `id` int NOT NULL,
-  `naslov` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `opis` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `takmicenje` int DEFAULT NULL,
-  `datum` timestamp NULL DEFAULT CURRENT_TIMESTAMP
+  `id` int(11) NOT NULL,
+  `naslov` varchar(255) NOT NULL,
+  `opis` varchar(255) NOT NULL,
+  `takmicenje` int(11) DEFAULT NULL,
+  `datum` timestamp NULL DEFAULT current_timestamp(),
+  `slika` int(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `vesti`
 --
 
-INSERT INTO `vesti` (`id`, `naslov`, `opis`, `takmicenje`, `datum`) VALUES
-(28, 'dsa', 'das', 1, NULL),
-(29, 'das', 'das', 1, NULL),
-(30, 'dsaaaaa', 'das', 1, NULL),
-(31, 'matija', 'matija', 0, NULL),
-(32, 'www', 'werwer', 0, NULL),
-(33, 'wqeqw', 'qwe', 1, NULL),
-(34, 'aaa', 'aaa', 0, '2023-05-08 06:11:44');
+INSERT INTO `vesti` (`id`, `naslov`, `opis`, `takmicenje`, `datum`, `slika`) VALUES
+(39, 'aleksa', 'aleksa', 1, '2024-04-14 15:28:43', 0),
+(40, 'gdfasasdfg', 'asdfasdfdfasd', 1, '2024-04-14 15:49:42', 0),
+(41, 'ova jaja', 'fjdsjkdsfsd', 1, '2024-04-14 15:49:49', 0);
 
 --
 -- Indexes for dumped tables
@@ -163,12 +158,6 @@ ALTER TABLE `files`
 -- Indexes for table `skola_login`
 --
 ALTER TABLE `skola_login`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `slike`
---
-ALTER TABLE `slike`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -191,31 +180,25 @@ ALTER TABLE `vesti`
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `fileid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `fileid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `skola_login`
 --
 ALTER TABLE `skola_login`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `slike`
---
-ALTER TABLE `slike`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `smerovi`
 --
 ALTER TABLE `smerovi`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `vesti`
 --
 ALTER TABLE `vesti`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
