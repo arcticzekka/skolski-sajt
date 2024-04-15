@@ -51,6 +51,9 @@ class Vesti extends Dbh
         $sql = "DELETE FROM vesti WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$vest]);
+        $sql2 = "UPDATE files SET vesti_id=0 WHERE vesti_id=?";
+        $stmt2= $this->connect()->prepare($sql2);
+        $stmt2->execute([$vest]);
     }
 
     public function editVest($vest, $novaVest, $novOpisVesti)

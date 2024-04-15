@@ -66,18 +66,17 @@
     </div>
   </div>
   <div class="project-desc-section wf-section">
-      <?php
-      include "../classes/vesti.php";
-      $vestiClass = new Vesti();
-      $id = $_GET["id"];
-      $takmicenje = $vestiClass->selectVest($id);
-      $slike = $vestiClass->getVestiFiles($id);
-
-      ?>
-    <h1 class="project-desc-title"><?= $takmicenje["naslov"] ?></h1>
-    <div class="project-img-wrapper"><img src="../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 800w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 1080w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 1299w" alt="" class="image-12"></div>
-    <div class="p-desc"><?= $takmicenje["opis"] ?></div
+    <h1 class="project-desc-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћудо унапређења наставе&quot;</h1>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="line-separator"></div>
     <div class="project-img-wrapper"><img src="images/Rectangle-64-1.png" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-12"></div>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="p-desc p-marginb">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="project-img-wrapper"><img src="images/Rectangle-64-1.png" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-12"></div>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+    <div class="p-desc">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
     <div class="project-img-wrapper"><img src="images/xmwkzipz-1.png" loading="lazy" sizes="(max-width: 511px) 100vw, 511px" srcset="images/xmwkzipz-1-p-500.png 500w, images/xmwkzipz-1.png 511w" alt="" class="image-13"></div>
   </div>
   <div class="container">

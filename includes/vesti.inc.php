@@ -10,6 +10,11 @@ if(isset($_POST["submit"])) {
         } else {
             $takmicenje = 0;
         }
+        if($img[0] == -1){
+            header("location: ../unosVesti.php?error=OdaberiValidnuSliku");
+            exit();
+        }
+
 
         include "../classes/vestiContr.php";
 
