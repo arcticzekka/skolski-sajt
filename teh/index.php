@@ -81,7 +81,7 @@
         <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
       </div>
       <div class="op-right op-hero-right">
-          <?php include("../classes/course.php");
+          <?php include "../classes/course.php";
           $smerKlasa = new Course();
           $smerovi = $smerKlasa->returnCourses();
           foreach($smerovi as $smer) {
@@ -102,36 +102,33 @@
       <div data-delay="4000" data-animation="slide" class="slider slider-p slider-2 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
         <h1 class="slider-title">Актуелности</h1>
         <div class="mask mask-p w-slider-mask">
+
+            <?php
+            include "../classes/vesti.php";
+            $vestiClass = new Vesti();
+            $vesti = $vestiClass->returnVesti();
+            foreach($vesti as $vest) {
+                $slike = $vestiClass->getVestiFiles($vest["id"]);
+            ?>
           <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
+            <div class="slide-card"><img src="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 800w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1080w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
+              <a href="takmicenje.php?id=<?= $vest["id"]?>"><div class="slide-smer-text"><?= $vest["naslov"] ?></div></a>
             </div>
           </div>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
-            </div>
-          </div>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
-            </div>
-          </div>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
-            </div>
-          </div>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
-            </div>
-          </div>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-              <div class="slide-smer-text">наслов</div>
-            </div>
-          </div>
+            <?php } ?>
+
+<!--          <div class="slide slide-home w-slide">-->
+<!--            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">-->
+<!--              <div class="slide-smer-text">наслов</div>-->
+<!--            </div>-->
+<!--          </div>-->
+
+<!--          <div class="slide slide-home w-slide">-->
+<!--            <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">-->
+<!--              <div class="slide-smer-text">наслов</div>-->
+<!--            </div>-->
+<!--          </div>-->
+
         </div>
         <div class="left-arrow fix-left w-slider-arrow-left">
           <div class="icon-2 w-icon-slider-left"></div>

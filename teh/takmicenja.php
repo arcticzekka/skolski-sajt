@@ -80,11 +80,12 @@
                 $vestiClass = new Vesti();
                 $takmicenja = $vestiClass->returnTakmicenja();
                 foreach($takmicenja as $takmicenje) {
+                    $slike = $vestiClass->getVestiFiles($takmicenje["id"]);
                 ?>
 
 
               <div class="slide slide-home w-slide">
-                <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
+                <div class="slide-card"><img src="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 800w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1080w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
                     <a href="takmicenje.php?id=<?= $takmicenje["id"]?>">
                     <div class="slide-smer-text"><?= $takmicenje["naslov"] ?></div>
                     </a>

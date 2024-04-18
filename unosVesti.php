@@ -29,7 +29,7 @@ if(isset($_SESSION['userid'])):
         <br>
         Odaberi sliku:
         <select Emp Name='NEW[]' name="slika" multiple style="height: 100px; width: 100px; overflow-y: visible">
-            <option value=-1>--- Odabir ---</option>
+            <option value="">--- Odabir ---</option>
             <?php
             $select="slika";
             if (isset ($select)&&$select!=""){
@@ -37,17 +37,11 @@ if(isset($_SESSION['userid'])):
             }
             ?>
             <?php
-            foreach($odabirSlike as $key => $value):
-                if($value["vesti_id"] != 0) continue;
-                ?>
+            foreach($odabirSlike as $key => $value):?>
                 <option value="<?php echo $value["fileid"];?>">
-                    <?php
-                        echo $value["filename"];
-                    ?>
+                    <?php echo $value["filename"]; ?>
                 </option>
             <?php endforeach;?>
-<!--            if ($x == "blue") continue;-->
-<!--            echo "$x <br>";-->
         </select>
         <br>
         <input type="submit" value="Unesi podatke" name="submit"><br>

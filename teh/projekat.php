@@ -70,19 +70,19 @@
       include "../classes/vesti.php";
       $vestiClass = new Vesti();
       $id = $_GET["id"];
-      $takmicenje = $vestiClass->selectVest($id);
-      $slike = $vestiClass->getVestiFiles($id);
+      $projekat = $vestiClass->selectSekcija($id);
+      $slike = $vestiClass->getSekcijaFiles($id);
 
       ?>
-    <h1 class="project-desc-title"><?= $takmicenje["naslov"] ?></h1>
-    <div class="project-img-wrapper"><img src="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 800w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 1080w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"]?> 1299w" alt="" class="image-12"></div>
-    <div class="p-desc"><?= $takmicenje["opis"] ?></div>
+    <h1 class="project-desc-title"><?= $projekat["naziv"] ?></h1>
+    <div class="project-img-wrapper"><img src="/uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="/uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"]?> 800w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"]?> 1080w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"]?> 1299w" alt="" class="image-12"></div>
+    <div class="p-desc"><?= $projekat["opis"] ?></div>
       <br>
       <?php
       foreach($slike as $index => $slika) {
           if($index == 0) continue;
       ?>
-    <div class="project-img-wrapper"><img src="/uploads/slike_vesti/<?= $slika["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="/uploads/slike_vesti/<?= $slika[$index]["uploadedFileName"] ?> 500w, /uploads/slike_vesti/<?= $slika[$index]["uploadedFileName"] ?> 800w, /uploads/slike_vesti/<?= $slika[$index]["uploadedFileName"] ?> 1080w, /uploads/slike_vesti/<?= $slika[$index]["uploadedFileName"] ?> 1299w" alt="" class="image-12"></div>
+    <div class="project-img-wrapper"><img src="/uploads/ostalo/<?= $slika["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="/uploads/ostalo/<?= $slika[$index]["uploadedFileName"] ?> 500w, /uploads/ostalo/<?= $slika[$index]["uploadedFileName"] ?> 800w, /uploads/ostalo/<?= $slika[$index]["uploadedFileName"] ?> 1080w, /uploads/ostalo/<?= $slika[$index]["uploadedFileName"] ?> 1299w" alt="" class="image-12"></div>
     <?php } ?>
       <div class="project-img-wrapper"><img src="images/xmwkzipz-1.png" loading="lazy" sizes="(max-width: 511px) 100vw, 511px" srcset="images/xmwkzipz-1-p-500.png 500w, images/xmwkzipz-1.png 511w" alt="" class="image-13"></div>
   </div>

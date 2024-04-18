@@ -1,10 +1,19 @@
 <?php
-include "dbh.php";
+include_once "dbh.php";
 class Vesti extends Dbh
 {
     public function selectVest($id)
     {
         $sql = "SELECT * FROM vesti WHERE id = ?";
+        $stmt = $this->connect()->prepare($sql);
+        $stmt->execute([$id]);
+        $res = $stmt->fetch();
+        return $res;
+    }
+
+    public function selectSekcija($id)
+    {
+        $sql = "SELECT * FROM sekcija WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$id]);
         $res = $stmt->fetch();
@@ -19,12 +28,28 @@ class Vesti extends Dbh
         return $res;
     }
 
+    public function returnSekcija()
+    {
+        $sql = "SELECT * FROM sekcija";
+        $stmt = $this->connect()->query($sql);
+        return $stmt;
+    }
+
+    public function returnVesti()
+    {
+        $sql = "SELECT * FROM vesti WHERE takmicenje = 0";
+        $stmt = $this->connect()->query($sql);
+        $res = $stmt->fetchAll();
+        return $res;
+    }
+
     public function returnVest()
     {
         $sql = "SELECT * FROM vesti";
         $stmt = $this->connect()->query($sql);
         return $stmt;
     }
+
     public function returnVestIme($ime)
     {
         $sql = "SELECT * FROM vesti WHERE naslov = ?";
@@ -51,9 +76,6 @@ class Vesti extends Dbh
         $sql = "DELETE FROM vesti WHERE id = ?";
         $stmt = $this->connect()->prepare($sql);
         $stmt->execute([$vest]);
-        $sql2 = "UPDATE files SET vesti_id=0 WHERE vesti_id=?";
-        $stmt2= $this->connect()->prepare($sql2);
-        $stmt2->execute([$vest]);
     }
 
     public function editVest($vest, $novaVest, $novOpisVesti)
@@ -70,7 +92,20 @@ class Vesti extends Dbh
 
     public function getVestiFiles($id)
     {
-        $sql = 'SELECT * FROM files WHERE vesti_id=?';
+        $sql = 'SELECT * FROM files WHERE vesti_id=? AND filetype=6';
+
+        $stmt = $this->connect()->prepare($sql);
+
+        $stmt->execute([$id]);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
+
+    public function getSekcijaFiles($id)
+    {
+        $sql = 'SELECT * FROM files WHERE vesti_id=? AND filetype=7';
 
         $stmt = $this->connect()->prepare($sql);
 

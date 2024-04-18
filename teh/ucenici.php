@@ -65,9 +65,47 @@
       </div>
     </div>
   </div>
-  <div class="ucenici-hero wf-section">
-    <h1 class="ucenici-heading">УЧЕНИЦИ</h1>
-    <div class="ucenici-text">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+  <div class="ucenici-hero wf-section" style=" height:1100px;">
+      <h1 class="ucenici-heading " style="margin-top: -2%;" >Пројекти</h1>
+      <div class="ucenici-text">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
+      <div class="btns-rasporedi-wrapper">
+          <section id="aktuelnost" class="home-slider-section wf-section">
+              <div class="container slider-container">
+                  <div data-delay="4000" data-animation="slide" class="slider slider-p slider-2 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+
+                      <div class="mask mask-p w-slider-mask">
+
+                          <?php
+                          include "../classes/vesti.php";
+                          $vestiClass = new Vesti();
+                          $sekcija = $vestiClass->returnSekcija();
+                          foreach($sekcija as $projekat) {
+                              $slike = $vestiClass->getSekcijaFiles($projekat["id"]);
+                              ?>
+
+
+                              <div class="slide slide-home w-slide">
+                                  <div class="slide-card"><img src="/uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="/uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?> 800w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?> 1080w, /uploads/ostalo/<?= $slike[0]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
+                                      <a href="projekat.php?id=<?= $projekat["id"]?>">
+                                          <div class="slide-smer-text"><?= $projekat["naziv"] ?></div>
+                                      </a>
+                                  </div>
+                              </div>
+
+                          <?php } ?>
+
+                      </div>
+                      <div class="left-arrow fix-left w-slider-arrow-left">
+                          <div class="icon-2 w-icon-slider-left" style="color:white;"></div>
+                      </div>
+                      <div class="right-arrow fix-right w-slider-arrow-right">
+                          <div class="icon-2 w-icon-slider-right" style="color:white;"></div>
+                      </div>
+                      <div class="slide-nav slide-nav-p fix-slide-nav w-slider-nav w-round w-num"></div>
+                  </div>
+              </div>
+          </section>
+      </div>
   </div>
   <div class="cards-ucenici wf-section">
     <div class="container projects-container">
