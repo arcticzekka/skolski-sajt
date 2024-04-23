@@ -7,7 +7,7 @@ $courseCon = new CourseCon();
 
 <html>
 <body>
-<form method="post" enctype="multipart/form-data">
+<form method="post" action="includes/smerovi.inc.php" enctype="multipart/form-data">
     <label>Naziv Smera:</label>
     <input name="course">
     <label>Opis Smera:</label>
@@ -32,14 +32,6 @@ $courseCon = new CourseCon();
 </form>
 
 
-<?php
-if(isset($_POST['submitCourse'])) {
-    $name = $_POST['course'];
-    $desc = $_POST['desc'];
-    $img = $_POST['NEW'];
-    $courseCon->handleSubmit($name, $desc, $img);
-    }
-    ?>
 
 <div>
 
