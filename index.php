@@ -1,71 +1,66 @@
 <?php
-    session_start();
+session_start();
 ?>
 
 <html>
 <head>
     <title>Dobrodosli!</title>
+    <link rel ="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<body style="height: 1000px;">
 <?php
 if(isset($_SESSION['userid'])):?>
-<p>Dobar dan, <?php echo $_SESSION['useruid'];?></p>
-<p>Privilegija: <?php echo $_SESSION["auth"]?></p>
+    <p class="greet" id="greet1" >Dobar dan, <?php echo $_SESSION['useruid'];?></p>
+    <p class="greet" >Privilegija: <?php echo $_SESSION["auth"]?></p>
 
-<div style="text-align: center;">
-    <form action="includes/signup.inc.php" method="post" style="display: inline-block;text-align: center;">
-        <div>
-            <label for="username">Korisnicko ime: </label>
-            <input type="text" name="uid">
-        </div>
-        <br>
-        <div>
-            <label for="password">Lozinka: </label>
-            <input type="password" name="pwd">
-        </div>
-        <br>
-        <div>
-            <label for="email">Email: </label>
-            <input type="text" name="email">
-        </div>
-        <br>
-        <label for="auth">Odaberi nivo privilegija:</label>
-        <select name="auth">
-            <option value="0">Admin</option>
-            <option value="1">Direktor</option>
-            <option value="2">Profesor</option>
-        </select>
-        <br>
-        <button type="submit" name="submit">Prijava Korisnika</button>
-    </form><br>
-    <button onclick="document.location='includes/logout.inc.php'" style="margin-top: 10px">Log Out</button>
-</div>
-<div style="  position: fixed;
-  bottom: 20px;
-  right:0%;
-  margin: 0 auto;">
-    <p style="text-align: right;text-decoration: none;"><a href="courseView.php">Izmena Smerova</a></p>
-    <p style="text-align: right;text-decoration: none;"><a href="promenaSifre.php">Promena Lozinke</a></p>
-    <p style="text-align: right;text-decoration: none;"><a href="unosVesti.php">Izmena Vesti</a></p>
-    <p style="text-align: right;text-decoration: none;"><a href="fileUpload.php">Unos File-ova</a></p>
+    <div>
+        <form class = "form"  action="includes/signup.inc.php" method="post">
+
+            <label class="formText" style="margin-bottom:2%;" for="username">Korisnicko ime: </label>
+            <input class="formTextInput" style="height:35px;" type="text" name="uid">
+
+            <label class="formText" style="margin-bottom:2%;" for="password">Lozinka: </label>
+            <input class="formTextInput" style="height:35px;" type="password" name="pwd">
+
+            <label class="formText" style="margin-bottom:2%;" for="email">Email: </label>
+            <input class="formTextInput" style="height:35px;" type="text" name="email">
+
+            <label class="formText" id="nivoPriv" for="auth">Odaberi nivo privilegija:</label>
+
+            <select name="auth" class="select">
+                <option value="0">Admin</option>
+                <option value="1">Direktor</option>
+                <option value="2">Profesor</option>
+            </select>
+            <button class="formBtn" type="submit" name="submit">Prijava korisnika</button>
+
+            <button class="formBtn"  onclick="document.location='includes/logout.inc.php'">Log Out</button>
+
+        </form>
+    </div>
+    <div class="links" >
+    <p ><a class="linksLink" href="unosProjekata.php">Izmena Projekata</a></p>
+    <p ><a class="linksLink"href="courseView.php">Izmena Smerova</a></p>
+    <p ><a class="linksLink" href="promenaSifre.php">Promena Lozinke</a></p>
+    <p ><a class="linksLink"href="unosVesti.php">Izmena Vesti</a></p>
+    <p ><a class="linksLink"href="fileUpload.php">Unos File-ova</a></p>
 <?php
 else:
     ?>
-</div>
-<div style="text-align: center">
-<form action="includes/login.inc.php" method="post" style="display: inline-block;text-align: center;width:250px;margin: 10% auto auto;">
-    <div>
-        <label for="username">Korisnicko ime: </label>
-        <input type="text" name="uid">
     </div>
-    <br>
-    <div>
-        <label for="password">Lozinka: </label>
-        <input type="password" name="pwd">
+    <div >
+        <form  class = "form" action="includes/login.inc.php" method="post" >
+
+            <label class = "formText" for="username">Korisničko ime</label>
+            <input class="formTextInput" type="text" name="uid">
+
+            <label class = "formText" for="password">Lozinka </label>
+            <input class="formTextInput" type="password" name="pwd">
+
+            <button class="formBtn"  type="submit" name="submit" >Login</button>
+
+        </form>
     </div>
-    <button type="submit" name="submit" style="margin-top: 10px">Login</button>
-</form>
-</div>
 <?php endif;?>
 </body>
 </html>

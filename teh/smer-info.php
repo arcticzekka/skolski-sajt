@@ -49,7 +49,10 @@
               <a href="javne-nabavke.php" class="menu-link w-nav-link">ЈАВНЕ НАБАВКЕ</a>
               <a href="finansijski-izvjestaj.php" class="menu-link w-nav-link">ФИНАНСИЈСКИ ИЗВЕШТАЈИ И ПЛАНОВИ</a>
             </div>
-            <div class="menu-text-block">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+            <div class="text-block-3">©<span id="currentYear"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear").innerText = currentYear;
+</script>
           </div>
         </nav>
         <div style="display:flex" class="nav-links">
@@ -69,42 +72,33 @@
     <div class="container smer-container">
         <?php
         include("../classes/course.php");
+        include("../classes/Files.php");
         $smerKlasa = new Course();
         $smerovi = $smerKlasa->returnCourses();
         $smerId = $_GET["smer"];
         $smer = $smerKlasa->selectCourse($smerId);
+        $fileKlasa = new Files();
+        $slika = $fileKlasa->getSmerFiles($smerId);
         ?>
       <h2 class="heading-prica ob-2-heading ob-page-heading smer-heading"><?= $smer["smer"] ?></h2>
-      <div class="line-down"></div><img src="/uploads/slike_smerovi/<?= $smer["id_slike"] ?>.png" loading="lazy" sizes="(max-width: 1299px) 100vw, 1299px" srcset="/uploads/slike_smerovi/<?= $smer["id_slike"] ?>.png 500w, /uploads/slike_smerovi/<?= $smer["id_slike"] ?>.png 800w, /uploads/slike_smerovi/<?= $smer["id_slike"] ?>.png 1080w, /uploads/slike_smerovi/<?= $smer["id_slike"] ?>.png 1299w" alt="" class="image-14">
+      <div class="line-down"></div><img src="../uploads/slike_smerovi/<?= $slika[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 540px) 50vw, 540px" srcset="../uploads/slike_smerovi/<?= $slika[0]["uploadedFileName"] ?> 500w" alt="" class="image-14">
       <div class="smer-p"><?= $smer["smer"]?> је <?= $smerId == 89 ? "трогодишње" : "четворогодишње"?> занимање.<br><br><?= $smer["opis"] ?></div>
       <h2 class="heading-prica ob-2-heading ob-page-heading smer-heading plan-heading">Oстали смерови</h2>
       <div class="line-down line40"></div>
-        <div data-delay="4000" data-animation="slide" class="slider w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
-            <div class="mask w-slider-mask">
-                <div class="slide w-slide">
-                    <?php
-                    foreach($smerovi as $key=>$smer) {
-                    ?>
-                    <?php if($key == 0) { ?>
-                    <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-                        <div class="slide-smer-text"><?= $smer["smer"] ?></div>
-                    </div>
-                </div>
-                <?php } else if($key == 1) { ?>
-                    <div class="slide w-slide">
-                        <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-                            <div class="slide-smer-text"><?= $smer["smer"] ?></div>
-                        </div>
-                    </div>
-                <?php } else { ?>
+      
+      <div data-delay="4000" data-animation="slide" class="slider slider-p slider-2 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true" style="width:80%;">
+            <div class="mask  mask-p w-slider-mask" >
+           <?php
+            foreach($smerovi as $key => $smer) {
+              $slike = $fileKlasa->getFiles(5);
+            ?>
+          <div class="slide slide-home w-slide" >
+            <div class="slide-card" ><img src="../uploads/slike_smerovi/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 500w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 800w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1080w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
+              <a href="smer-info.php?smer=<?= $smer["id"]?>"><div class="slide-smer-text"><?= $smer["smer"] ?></div></a>
+            </div>
+          </div>
+            <?php } ?>
 
-                    <div class="slide w-slide">
-                        <div class="slide-card"><img src="images/Rectangle-64-1.png" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="images/Rectangle-64-p-500.png 500w, images/Rectangle-64-p-800.png 800w, images/Rectangle-64-p-1080.png 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
-                            <div class="slide-smer-text"><?= $smer["smer"] ?></div>
-                        </div>
-                    </div>
-
-                <?php }} ?>
             </div>
             <div class="w-slider-arrow-left">
                 <div class="icon-2 w-icon-slider-left"></div>
@@ -112,7 +106,7 @@
             <div class="w-slider-arrow-right">
                 <div class="icon-2 w-icon-slider-right"></div>
             </div>
-            <div class="slide-nav slide-nav-none w-slider-nav w-round w-num"></div>
+            <!-- <div class="slide-nav slide-nav-none w-slider-nav w-round w-num"></div> -->
         </div>
     </div>
   </div>
@@ -155,9 +149,48 @@
         </div>
       </div>
     </div>
-    <div class="text-block-3">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+    <div class="text-block-3">©2024 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6456c2138619102a79ba202a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
 </body>
 </html>
+
+
+
+<!-- <div class="mask w-slider-mask">
+           
+                <div class="slide w-slide">
+                    <?php
+                    foreach($smerovi as $key=>$smer) {
+                      $slike = $fileKlasa->getFiles(5);
+                    ?>
+                    <?php if($key == 0) { ?>
+                    <div class="slide-card"><img src="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 500w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 800w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1080w, images/Rectangle-64-1.png 1299w" alt="" class="image-10">
+                        <a href="./smer-info.php?smer=<?= $smer["id"] ?>"><div class="slide-smer-text"><?= $smer["smer"] ?></div></a>
+                    </div>
+                </div>
+                <?php } else if($key == 1) { ?>
+                    <div class="slide w-slide">
+                        <div class="slide-card"><img src="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 500w,../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 800w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1080w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
+                        <a href="./smer-info.php?smer=<?= $smer["id"] ?>"><div class="slide-smer-text"><?= $smer["smer"] ?></div></a>
+                        </div>
+                    </div>
+                <?php } else { ?>
+
+                    <div class="slide w-slide">
+                        <div class="slide-card"><img src="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 767px) 426px, (max-width: 991px) 317px, 423px" srcset="../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 500w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 800w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?> 1080w, ../uploads/slike_smerovi/<?= $slike[$key]["uploadedFileName"] ?>" alt="" class="image-10">
+                        <a href="./smer-info.php?smer=<?= $smer["id"] ?>"><div class="slide-smer-text"><?= $smer["smer"] ?></div></a>
+                        </div>
+                    </div>
+
+                <?php }} ?>
+            </div>
+            <div class="w-slider-arrow-left">
+                <div class="icon-2 w-icon-slider-left"></div>
+            </div>
+            <div class="w-slider-arrow-right">
+                <div class="icon-2 w-icon-slider-right"></div>
+            </div>
+            <div class="slide-nav slide-nav-none w-slider-nav w-round w-num"></div>
+        </div> -->

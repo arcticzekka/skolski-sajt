@@ -1,9 +1,9 @@
 <?php
 session_start();
 if(isset($_SESSION['userid'])):
-include "classes/dbh.php";
-$vest = new Dbh();
-$vesti = $vest->getVestiDbh();
+include "classes/projekti.php";
+$projekatClass = new Projekti();
+$projekti = $projekatClass->returnProjekti();
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@ $vesti = $vest->getVestiDbh();
 
         <table class="fileTable" id="vestiTable">
             <?php
-            foreach ($vesti as $key => $value):
+            foreach ($projekti as $key => $value):
                 ?>
                 <tr>
                     <td>
@@ -30,17 +30,17 @@ $vesti = $vest->getVestiDbh();
                         <?= $value['naslov'] ?>
                     </td>
                     <td>
-                        <a class="linkTable" href="includes/editVesti.php?id=<?= $value['id'] ?>">Izmeni</a>
+                        <a class="linkTable" href="includes/editProjekat.php?id=<?= $value['id'] ?>">Izmeni</a>
                     </td>
                     <td>
-                        <a class="linkTable" href="includes/deleteVesti.php?id=<?= $value['id'] ?>">Obrisi</a>
+                        <a class="linkTable" href="includes/deleteProjekat.php?id=<?= $value['id'] ?>">Obrisi</a>
                     </td>
 
                 </tr>
             <?php endforeach; ?>
         </table>
     </form>
-    <button class="formBtn" id="povratak" style="height:80px;" onclick="document.location='unosVesti.php'">Povratak</button>
+    <button class="formBtn" id="povratak" style="height:80px;" onclick="document.location='unosProjekata.php'">Povratak</button>
 
 </div>
 </body>

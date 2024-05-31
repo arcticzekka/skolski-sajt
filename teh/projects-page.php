@@ -49,7 +49,10 @@
               <a href="javne-nabavke.php" class="menu-link w-nav-link">ЈАВНЕ НАБАВКЕ</a>
               <a href="finansijski-izvjestaj.php" class="menu-link w-nav-link">ФИНАНСИJСКИ ИЗВЕШТАЈИ И ПЛАНОВИ</a>
             </div>
-            <div class="menu-text-block">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+            <div class="text-block-3">©<span id="currentYear"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear").innerText = currentYear;
+</script>
           </div>
         </nav>
         <div style="display:flex" class="nav-links">
@@ -71,131 +74,46 @@
       <div class="projects-title-description">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства,</div>
     </div>
     <div class="container sort-container">
-      <div class="sort-btn">
-        <div class="text-block-7">Сортирај</div><img src="images/arrow.svg" loading="lazy" alt="" class="image-11">
-      </div>
     </div>
     <div class="container projects-container projects-page-container page-ofix-container">
-      <div class="row-page">
+    <?php
+    include "../classes/projekti.php";
+
+            $projektiClass = new Projekti();
+            $projekti = $projektiClass->returnProjekti();
+            foreach($projekti as $key => $projekat) {
+                 $slike = $projektiClass->getProjekatFiles($projekat["id"]);
+                 if($key % 2 == 0) {
+            ?>
+    <div class="row-page">
+
         <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
+          <div class="card-content card-content-projects"><img src="../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 500w, ../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 696w" alt="" class="card-img card-img-project">
             <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="5f4ee33f-914b-995e-9483-6c59a24bba8e" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
+              <div class="op-section-list project-title"><?= $projekat["naslov"] ?></div>
+              <div class="text-block-2"><?= $projekat["opis"] ?></div>
+              <a data-w-id="5f4ee33f-914b-995e-9483-6c59a24bba8e" href="projekat.php?id=<?= $projekat["id"]?>" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
+                <div class="projects-page-btn">Научите више</div>
               </a>
             </div>
           </div>
         </div>
+        <?php } else { ?>
+        
         <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
+          <div class="card-content card-content-projects"><img src="../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 500w, ../uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 696w" alt="" class="card-img card-img-project">
             <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="4a3e6501-e60e-84ef-8ad5-1518a67d9a92" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row-page">
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="a8bb868b-9fd3-6412-a658-75ebe25bca07" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="a8bb868b-9fd3-6412-a658-75ebe25bca13" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
+              <div class="op-section-list project-title"><?= $projekat["naslov"] ?></div>
+              <div class="text-block-2"><?= $projekat["opis"] ?></div>
+              <a data-w-id="4a3e6501-e60e-84ef-8ad5-1518a67d9a92" href="projekat.php?id=<?= $projekat["id"]?>" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
+                <div class="projects-page-btn">Научите више</div>
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="row-page">
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="d613ddbf-6467-bcc4-1a42-91cfb782a8d3" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="d613ddbf-6467-bcc4-1a42-91cfb782a8df" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row-page">
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="af0e2b4d-4942-41c7-1481-ed0f4cc9f200" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="af0e2b4d-4942-41c7-1481-ed0f4cc9f20c" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row-page">
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="7447a46b-060c-76c9-89fa-1e1b0dc027f1" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="card-page1 card-project card-page-project card-only">
-          <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 70vw, (max-width: 991px) 46vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-            <div class="card-projects-text-wrapper">
-              <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-              <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-              <a data-w-id="7447a46b-060c-76c9-89fa-1e1b0dc027fd" href="takmicenje.php" class="op-btn-wrapper prica-btn projects-btn projects-only w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
+      <?php }} ?>
+
     </div>
   </div>
   <div class="all-sections footer wf-section">
@@ -237,7 +155,10 @@
         </div>
       </div>
     </div>
-    <div class="text-block-3">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+    <div class="text-block-3">©<span id="currentYear2"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear2").innerText = currentYear;
+</script>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6456c2138619102a79ba202a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>

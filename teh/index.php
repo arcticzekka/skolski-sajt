@@ -47,8 +47,10 @@
               <a href="javne-nabavke.php" class="menu-link w-nav-link">ЈАВНЕ НАБАВКЕ</a>
               <a href="finansijski-izvjestaj.php" class="menu-link w-nav-link">ФИНАНСИЈСКИ ИЗВЕШТАЈИ И ПЛАНОВИ</a>
             </div>
-            <div class="menu-text-block">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
-          </div>
+            <div class="text-block-3">©<span id="currentYear2"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear2").innerText = currentYear;
+</script> </div>
         </nav>
         <div style="display:flex" class="nav-links">
           <a href="index.php" aria-current="page" class="nav-link w-nav-link w--current">ПОЧЕТНА</a>
@@ -66,7 +68,7 @@
   <div class="hero wf-section">
     <div class="container">
       <div class="hero-main-wrapper">
-        <h1 class="hero-heading">техничка школа</h1>
+        <h1 class="hero-heading">Техничка школа</h1>
         <div class="hero-heading-2">
           <div class="hero-heading heading-hero-c">Чачак</div><img src="images/Rectangle-7.png" loading="lazy" sizes="(max-width: 479px) 100vw, (max-width: 767px) 97vw, (max-width: 991px) 669px, 800px" srcset="images/Rectangle-7-p-500.png 500w, images/Rectangle-7-p-800.png 800w, images/Rectangle-7.png 997w" alt="" class="image-2">
         </div>
@@ -78,7 +80,7 @@
     <div class="container ob-container">
       <div class="op-left">
         <h2 class="heading-prica">ОБРАЗОВНИ ПРОФИЛИ</h2>
-        <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod temporincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrudexercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+        <div class="text-block-2">Техничка школа данас школује образвне профиле из области електротехнике и грађевинарства. Ученици школе постижу веома успешне резултате на републичким и окружним такмичењима из области рачунарства, електротехнике, грађевинарства, математике. Освајају награде на литерарним конкурсима, изложбама фотографије и разним спортским турнирима и такмичењима.</div>
       </div>
       <div class="op-right op-hero-right">
           <?php include "../classes/course.php";
@@ -107,11 +109,11 @@
             include "../classes/vesti.php";
             $vestiClass = new Vesti();
             $vesti = $vestiClass->returnVesti();
-            foreach($vesti as $vest) {
+            foreach($vesti as $key => $vest) {
                 $slike = $vestiClass->getVestiFiles($vest["id"]);
             ?>
-          <div class="slide slide-home w-slide">
-            <div class="slide-card"><img src="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="/uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 800w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1080w, /uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
+          <div class="slide slide-home w-slide" >
+            <div class="slide-card" ><img src="../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" width="446" sizes="(max-width: 479px) 303px, (max-width: 767px) 426px, (max-width: 991px) 317px, 446px" srcset="../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 500w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 800w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1080w, ../uploads/slike_vesti/<?= $slike[0]["uploadedFileName"] ?> 1299w" alt="" class="image-10">
               <a href="takmicenje.php?id=<?= $vest["id"]?>"><div class="slide-smer-text"><?= $vest["naslov"] ?></div></a>
             </div>
           </div>
@@ -177,28 +179,31 @@
       <div class="projets-title-line"></div>
     </div>
     <div class="container projects-container projects-section">
+
+    <?php
+    include "../classes/projekti.php";
+
+            $projektiClass = new Projekti();
+            $projekti = $projektiClass->returnProjekti();
+            foreach($projekti as $key => $projekat) {
+                if($key == 2) break;
+                 $slike = $projektiClass->getProjekatFiles($projekat["id"]);
+            ?>
+
       <div class="card-page1 card-project">
-        <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 767px) 81vw, (max-width: 991px) 42vw, 33vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
+        <div class="card-content card-content-projects"><img src="/uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 767px) 81vw, (max-width: 991px) 42vw, 33vw" srcset="/uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 696w" alt="" class="card-img card-img-project">
           <div class="card-projects-text-wrapper">
-            <div class="op-section-list project-title">Пројекат очувања животне средине</div>
-            <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-            <a data-w-id="dc430787-c670-4bf2-ffd3-6e96fb708df0" href="projects-page.php" class="op-btn-wrapper prica-btn projects-section-btn card-section-content w-inline-block">
-              <div class="op-section-list op-section-btn projects-btn">Сазнај више</div><img src="images/right-2.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-            </a>
-          </div>
-        </div>
-      </div>
-      <div class="card-page1 card-project">
-        <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 767px) 81vw, (max-width: 991px) 42vw, 33vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-          <div class="card-projects-text-wrapper">
-            <div class="op-section-list project-title">Пројекат очувања животне средине</div>
-            <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
+            <div class="op-section-list project-title"><?= $projekat["naslov"] ?></div>
+            <div class="text-block-2"><?= $projekat["opis"] ?></div>
             <a data-w-id="5eb6347c-c5d8-27f9-42bc-cd9f2cd3d572" href="projects-page.php" class="op-btn-wrapper prica-btn projects-section-btn card-section-content w-inline-block">
               <div class="op-section-list op-section-btn projects-btn">Сазнај више</div><img src="images/right-2.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
             </a>
           </div>
         </div>
       </div>
+
+      <?php } ?>
+
     </div>
   </div>
   <div class="all-sections footer wf-section">
@@ -240,7 +245,10 @@
         </div>
       </div>
     </div>
-    <div class="text-block-3">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+    <div class="text-block-3">©<span id="currentYear"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear").innerText = currentYear;
+</script>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6456c2138619102a79ba202a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>

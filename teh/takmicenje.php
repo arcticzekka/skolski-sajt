@@ -49,7 +49,10 @@
               <a href="javne-nabavke.php" class="menu-link w-nav-link">ЈАВНЕ НАБАВКЕ</a>
               <a href="finansijski-izvjestaj.php" class="menu-link w-nav-link">ФИНАНСИЈСКИ ИЗВЕШТАЈИ И ПЛАНОВИ</a>
             </div>
-            <div class="menu-text-block">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+            <div class="text-block-3">©<span id="currentYear2"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear2").innerText = currentYear;
+</script>
           </div>
         </nav>
         <div style="display:flex" class="nav-links">
@@ -87,64 +90,39 @@
       <div class="project-img-wrapper"><img src="images/xmwkzipz-1.png" loading="lazy" sizes="(max-width: 511px) 100vw, 511px" srcset="images/xmwkzipz-1-p-500.png 500w, images/xmwkzipz-1.png 511w" alt="" class="image-13"></div>
   </div>
   <div class="container">
-    <div data-delay="4000" data-animation="slide" class="slider slider-p slider-2 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true">
+   
+  <div data-delay="4000" data-animation="slide" class="slider slider-p slider-2 w-slider" data-autoplay="false" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-duration="500" data-infinite="true" style="margin-left:10%;max-width:95%;">
+
       <div class="mask mask-p w-slider-mask">
-        <div class="slide slide-p w-slide">
-          <div class="card-page1 card-project slide-card-project">
-            <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 991px) 77vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-              <div class="card-projects-text-wrapper">
-                <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-                <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-                <a data-w-id="c308a38d-3e2e-e2db-974f-0ceac941abbc" href="#" class="op-btn-wrapper prica-btn projects-btn w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                  <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="slide slide-p w-slide">
-          <div class="card-page1 card-project slide-card-project">
-            <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 991px) 77vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-              <div class="card-projects-text-wrapper">
-                <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-                <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-                <a data-w-id="43ce28b8-c3fc-8c90-c469-50cb237c8d0b" href="#" class="op-btn-wrapper prica-btn projects-btn w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                  <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+          <?php
+          include "../classes/projekti.php";
 
-        <div class="slide slide-p w-slide">
-          <div class="card-page1 card-project slide-card-project">
-            <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 991px) 77vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-              <div class="card-projects-text-wrapper">
-                <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-                <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-                <a data-w-id="f0be91de-9f9f-8812-91f3-352fdab79634" href="#" class="op-btn-wrapper prica-btn projects-btn w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                  <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
+          $projektiClass = new Projekti();
+          $projekti = $projektiClass->returnProjekti();
+          foreach($projekti as $key => $projekat) {
+              if($key == 4) break;
+               $slike = $projektiClass->getProjekatFiles($projekat["id"]);
+              ?>
 
-        <div class="slide slide-p w-slide">
-          <div class="card-page1 card-project slide-card-project">
-            <div class="card-content card-content-projects"><img src="images/Rectangle-24.png" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 991px) 77vw, 38vw" srcset="images/Rectangle-24-p-500.png 500w, images/Rectangle-24.png 696w" alt="" class="card-img card-img-project">
-              <div class="card-projects-text-wrapper">
-                <div class="op-section-list project-title">ПРОЈЕКАТ ЕРАЗМУС + &quot;Мобилношћу до...</div>
-                <div class="text-block-2">Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua.</div>
-                <a data-w-id="88d19eee-5125-3f59-a64c-dc773ee1594e" href="#" class="op-btn-wrapper prica-btn projects-btn w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
-                  <div class="projects-page-btn">Научите више о ПРОЈЕКАТ ЕРАЗ...</div>
-                </a>
+
+              <div class="slide slide-p w-slide">
+                  <div class="card-page1 card-project slide-card-project">
+                      <div class="card-content card-content-projects"><img src="/uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?>" loading="lazy" sizes="(max-width: 479px) 76vw, (max-width: 991px) 77vw, 38vw" srcset="/uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"] ?> 500w, /uploads/skola_dokumenta/<?= $slike[0]["uploadedFileName"]?> 696w" alt="" class="card-img card-img-project">
+                          <div class="card-projects-text-wrapper">
+                              <div class="op-section-list project-title"><?= $projekat["naslov"] ?></div>
+                              <div class="text-block-2"><?= $projekat["opis"] ?></div>
+                              <a data-w-id="c308a38d-3e2e-e2db-974f-0ceac941abbc" href="#" class="op-btn-wrapper prica-btn projects-btn w-inline-block"><img src="images/Component-1.png" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0, 0);transform-style:preserve-3d" alt="" class="op-img">
+                                  <div class="projects-page-btn">Научите више</div>
+                              </a>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
-        </div>
+
+          <?php } ?>
       </div>
+
       <div class="left-arrow w-slider-arrow-left">
         <div class="icon-2 w-icon-slider-left"></div>
       </div>
@@ -206,7 +184,10 @@
         </div>
       </div>
     </div>
-    <div class="text-block-3">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+    <div class="text-block-3">©<span id="currentYear"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear").innerText = currentYear;
+</script>
   </div>
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6456c2138619102a79ba202a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>

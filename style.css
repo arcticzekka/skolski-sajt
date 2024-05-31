@@ -1,0 +1,245 @@
+body{
+    height:100%;
+}
+.form
+{
+    background-color: white;
+    display: block;
+    width:550px;
+    height: 730px;
+    margin:3% auto auto;
+    padding-top:3%;
+    margin-bottom: 100px;
+    border-radius: 6px;
+    border: 5px solid #405cf5;
+
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 2px inset,rgba(50, 50, 93, .1) 0 4px 7px 0,rgba(0, 0, 0, 0.07) 0 3px 5px 4px; 
+}
+
+.formText
+{
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 30px;
+    margin-left: 15%;
+    float:left;
+    clear: both;
+    margin-bottom: 5%;
+}
+.formTextInput
+{
+    clear:both;
+    float:left;
+    margin-left: 15%;
+    margin-bottom: 5%;
+    width:70%;
+    height:45px;
+    font-size: 25px;
+}
+#check
+{
+    width:25px;
+    margin-left: 0%;
+    float:right;
+    margin-top: -12%;
+    margin-right: 50%;
+}
+.formBtn
+{
+    margin:10% auto;
+    clear:both;
+    float:left;
+    font-size: 20px;
+
+}
+.formBtn {
+    appearance: button;
+    backface-visibility: hidden;
+    background-color: #405cf5;
+    border-radius: 6px;
+    border-width: 0;
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset,rgba(50, 50, 93, .1) 0 2px 5px 0,rgba(0, 0, 0, .07) 0 1px 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 25px;
+    height: 13%;
+    line-height: 1.15;
+    margin:5% auto;
+    margin-left: 30%;
+    outline: none;
+    overflow: hidden;
+    padding: 0 25px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+    transform: translateZ(0);
+    transition: all .2s,box-shadow .08s ease-in;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 40%;
+    clear:both;
+    float:left;
+}
+
+.formBtn:hover{
+    box-shadow: rgba(50, 50, 93, .1) 0 0 0 1px inset, rgba(50, 50, 93, .2) 0 6px 15px 0, rgba(0, 0, 0, .1) 0 2px 2px 0, rgba(50, 151, 211, .3) 0 0 0 4px;
+    transition: 0.3s;
+ 
+}
+
+.formBtn:disabled {
+  cursor: default;
+  background-color: #405cf5;
+}
+
+.formBtn:focus {
+  background-color: #2040f8fa;
+}
+#povratak
+{
+    width:25%;
+    height:8%;
+    margin-left: 37.5%;
+}
+.select
+{
+    font-size: 25px;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    float: left;
+    margin-left: 3%;
+    margin-top: 3%;
+}
+#nivoPriv
+{
+    margin-left: 10% !important;
+    margin-top: 2%;
+}
+.greet
+{
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    margin:0 auto;
+    text-align: center;
+    font-size: 30px;
+    
+}
+#greet1
+{
+    font-size: 35px;
+    margin-top:5%;
+    margin-bottom: 1%;
+}
+.links
+{
+    position: fixed;
+    bottom: 20px;
+    right:0%;
+    margin: 0 auto;
+    margin-right: 2% !important;
+
+}
+.linksLink
+{
+    color:black;
+    text-align: right;
+    text-decoration: none;
+    font-size: 30px;
+    font-style: italic;
+}
+#vestiLink
+{
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: 30px;
+    color:#2040f8fa;
+    
+}
+#vestiLink:hover
+{
+    color:black;
+    transition: 0.5s;
+    font-style: italic;
+}
+.linksLink:hover
+{
+    color:#2040f8fa;
+    transition: 0.5s;
+}
+
+#odabirSlike
+{
+    margin-left: 15% !important;
+    margin-top: 2%;
+}
+.formSmer
+{
+    width:50%;
+    margin-left: 25%;
+    margin-top: 3%;
+
+}
+.smer
+{
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    font-size: 30px;
+   
+}
+table
+{
+    width:100%;
+    font-size: 20px;
+    text-align: center;
+}
+table,th, td
+{
+    border:2px solid black;
+    border-collapse:collapse;
+}
+.linkTable
+{
+    text-decoration: none;
+    font-style: normal;
+    
+    color:black;
+    
+}
+.linkTable:hover
+{
+    color:#405cf5;
+    font-style: italic;
+    
+}
+.formPwd
+{
+    margin-top: 5%;
+    width:75%;
+    margin-left:12.5%;
+    
+}
+#filetype
+{
+    margin-top: 1%;
+}
+
+#formUpload
+{
+    height:800px;
+}
+.heig
+{
+    height:100%;
+}
+.fileTable
+{
+    width:100%;
+    font-size: 20px;
+    text-align: center;
+    font-family: -apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif;
+    margin-bottom: 100px;
+}
+#vestiForm
+{
+    height:1000px;
+}
+

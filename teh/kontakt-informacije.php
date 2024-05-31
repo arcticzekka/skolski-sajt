@@ -49,7 +49,10 @@
               <a href="javne-nabavke.php" class="menu-link w-nav-link">ЈАВНЕ НАБАВКЕ</a>
               <a href="finansijski-izvjestaj.php" class="menu-link w-nav-link">ФИНАНСИЈСКИ ИЗВЕШТАЈИ И ПЛАНОВИ</a>
             </div>
-            <div class="menu-text-block">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+            <div class="text-block-3">©<span id="currentYear2"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear2").innerText = currentYear;
+</script>
           </div>
         </nav>
         <div style="display:flex" class="nav-links">
@@ -68,7 +71,7 @@
   <section class="contact-section wf-section">
     <div class="container contact-container">
       <h1 class="main-team-heading">КОНТАКТ ИНФОРМАЦИЈЕ</h1>
-      <div class="map-location"><img src="images/Intersect.png" loading="lazy" sizes="(max-width: 1457px) 100vw, 1457px" srcset="images/Intersect.png 500w, images/Intersect.png 800w, images/Intersect.png 1080w, images/Intersect.png 1457w" alt=""></div>
+      <div class="map-location"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2033.0281309727595!2d20.340567816810932!3d43.89445084663781!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4757721061bb04b5%3A0x48a6cbe335a67aa7!2zVGVobmnEjWthIMWha29sYQ!5e0!3m2!1sen!2srs!4v1714122077246!5m2!1sen!2srs" width="85%" height="600px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       <div class="contact-info">
         <div class="row-flex">
           <div class="_1contact"><img src="images/icons8-gmail.png" loading="lazy" alt="">
@@ -127,8 +130,13 @@
         </div>
       </div>
     </div>
-    <div class="text-block-3">©2023 ТЕХНИЧКА ШКОЛА ЧАЧАК</div>
+    <div class="text-block-3">©<span id="currentYear"></span> ТЕХНИЧКА ШКОЛА ЧАЧАК</div><script>
+  var currentYear = new Date().getFullYear();
+  document.getElementById("currentYear").innerText = currentYear;
+</script>
   </div>
+  
+
   <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=6456c2138619102a79ba202a" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   <script src="js/webflow.js" type="text/javascript"></script>
 </body>

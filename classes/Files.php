@@ -1,5 +1,5 @@
 <?php
-require 'dbh.php';
+include_once 'dbh.php';
 
 class Files extends Dbh{
     private $pdo;
@@ -125,4 +125,18 @@ class Files extends Dbh{
 
         return $result;
     }
+
+    public function getSmerFiles($id)
+    {
+        $sql = 'SELECT * FROM files WHERE vesti_id=? AND filetype=5';
+
+        $stmt = $this->connect()->prepare($sql);
+
+        $stmt->execute([$id]);
+
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        return $result;
+    }
 }
+

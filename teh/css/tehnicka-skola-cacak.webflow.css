@@ -1,3 +1,8 @@
+a {
+  text-decoration: none ;
+  color:default;
+}
+
 .container {
   max-width: 1650px;
   flex-wrap: wrap;
@@ -1478,8 +1483,9 @@
 .slide-card {
   width: 450px;
   height: 500px;
-  background-color: #bbb;
+  background-color: #020a4e;
   margin-left: auto;
+  color:white ;
   margin-right: auto;
 }
 
@@ -1491,13 +1497,13 @@
 }
 
 .slide-smer-text {
-  color: #000;
   text-align: center;
   margin-top: 60px;
   font-family: Roboto, sans-serif;
   font-size: 28px;
   font-weight: 500;
   line-height: 32px;
+  color:white;
 }
 
 .overlay {

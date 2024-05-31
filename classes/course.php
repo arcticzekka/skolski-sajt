@@ -23,18 +23,29 @@ class Course extends Dbh
         $stmt = $this->connect()->query($sql);
         return $stmt;
     }
+
+    public function updateFile($fileid, $id){
+        $sql2 = "UPDATE files SET vesti_id=? WHERE fileid=?";
+        $stmt2= $this->connect()->prepare($sql2);
+        $stmt2->execute([$this->selectCourse($id)['id'], $fileid]);
+    }
+
     public function inputCourse($course, $desc, $img)
     {
-        $sql = "INSERT INTO smerovi(smer, opis, id_slike) VALUES (?, ?, ?)";
+        $sql = "INSERT INTO smerovi(smer, opis) VALUES (?, ?)";
         $stmt = $this->connect()->prepare($sql);
-        $stmt->execute([$course, $desc, $img]);
+        $stmt->execute([$course, $desc]);
 
         $sql = "SELECT MAX(id) FROM smerovi";
         $stmt = $this->connect()->query($sql);
         $stmt->execute();
         $idSmerovi = $stmt->fetch()[0];
 
+        Course::updateFile($img, $idSmerovi);
+
     }
+
+    
 
     public function delCourse($course)
     {
